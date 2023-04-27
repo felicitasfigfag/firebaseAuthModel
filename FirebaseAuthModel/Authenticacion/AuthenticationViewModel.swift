@@ -15,6 +15,11 @@ final class AuthenticationViewModel : ObservableObject {
     
     init(authenticationRepository: AuthenticationRepository = AuthenticationRepository() ) {
         self.authenticationRepository = authenticationRepository
+        getCurrentUser()
+    }
+    
+    func getCurrentUser() {
+        self.user = authenticationRepository.getCurrentUser()
     }
     
     func createNewUser(email: String, password: String) {

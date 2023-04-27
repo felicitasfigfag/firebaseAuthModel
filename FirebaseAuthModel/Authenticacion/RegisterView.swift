@@ -9,7 +9,7 @@ import SwiftUI
 import AuthenticationServices // for Sign in with Apple
 
 struct RegisterView: View {
-    // AUTH: newUser saves on Firebase
+    
     @ObservedObject var authenticationViewModel: AuthenticationViewModel
     @State private var username: String = ""
     @State private var email: String = ""
