@@ -27,7 +27,7 @@ struct FirebaseAuthModelApp: App {
     var body: some Scene {
         WindowGroup {
             if let user = authenticationViewModel.user {
-                Text("User logged")
+                HomeView(authViewModel: authenticationViewModel)
             } else {
                 AuthenticationView(authenticationViewModel: authenticationViewModel)
             }

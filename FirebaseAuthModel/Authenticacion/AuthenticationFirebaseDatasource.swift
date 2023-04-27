@@ -21,6 +21,11 @@ final class AuthenticationFirebaseDatasource {
         return .init(email: email)
     }
     
+    func logout() throws {
+        try Auth.auth().signOut()
+        
+    }
+    
     func createNewUser(email: String, password: String, completionBlock: @escaping (Result<User, Error>) -> Void){
         Auth.auth().createUser(withEmail: email, password: password) { AuthDataResult, error in
             if let error = error {

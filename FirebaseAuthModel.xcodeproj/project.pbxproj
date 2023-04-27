@@ -20,6 +20,7 @@
 		191A934629FB281400189BB4 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 191A934529FB281400189BB4 /* FirebaseAuth */; };
 		191A934929FB28D700189BB4 /* AuthenticationFirebaseDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191A934829FB28D700189BB4 /* AuthenticationFirebaseDatasource.swift */; };
 		191A934B29FB2B6300189BB4 /* AuthenticationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191A934A29FB2B6300189BB4 /* AuthenticationRepository.swift */; };
+		19BA27C629FB41CB0028E28E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BA27C529FB41CB0028E28E /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		191A934229FB0F7800189BB4 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		191A934829FB28D700189BB4 /* AuthenticationFirebaseDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationFirebaseDatasource.swift; sourceTree = "<group>"; };
 		191A934A29FB2B6300189BB4 /* AuthenticationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRepository.swift; sourceTree = "<group>"; };
+		19BA27C529FB41CB0028E28E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,14 +99,23 @@
 		191A934729FB285800189BB4 /* Authenticacion */ = {
 			isa = PBXGroup;
 			children = (
-				191A932D29FAE6F800189BB4 /* AuthenticationView.swift */,
-				191A934029FB0F6B00189BB4 /* LoginView.swift */,
-				191A934229FB0F7800189BB4 /* RegisterView.swift */,
+				19BA27C429FB41BE0028E28E /* Views */,
 				191A934829FB28D700189BB4 /* AuthenticationFirebaseDatasource.swift */,
 				191A934A29FB2B6300189BB4 /* AuthenticationRepository.swift */,
 				1909B8A829FB30200021C07C /* AuthenticationViewModel.swift */,
 			);
 			path = Authenticacion;
+			sourceTree = "<group>";
+		};
+		19BA27C429FB41BE0028E28E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				191A932D29FAE6F800189BB4 /* AuthenticationView.swift */,
+				191A934029FB0F6B00189BB4 /* LoginView.swift */,
+				191A934229FB0F7800189BB4 /* RegisterView.swift */,
+				19BA27C529FB41CB0028E28E /* HomeView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,6 +202,7 @@
 				1909B8A929FB30200021C07C /* AuthenticationViewModel.swift in Sources */,
 				191A934329FB0F7800189BB4 /* RegisterView.swift in Sources */,
 				191A934B29FB2B6300189BB4 /* AuthenticationRepository.swift in Sources */,
+				19BA27C629FB41CB0028E28E /* HomeView.swift in Sources */,
 				191A932E29FAE6F800189BB4 /* AuthenticationView.swift in Sources */,
 				191A932C29FAE6F800189BB4 /* FirebaseAuthModelApp.swift in Sources */,
 			);

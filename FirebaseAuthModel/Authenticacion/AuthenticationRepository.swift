@@ -22,5 +22,9 @@ final class AuthenticationRepository {
                        password: String,
                        completionBlock: @escaping (Result<User, Error>) -> Void) {
         authenticationFirebaseDatasource.createNewUser(email: email, password: password, completionBlock: completionBlock)
-    } 
+    }
+    
+    func logout() throws {
+        try authenticationFirebaseDatasource.logout()
+    }
 }
