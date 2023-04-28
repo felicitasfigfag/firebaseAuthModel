@@ -7,13 +7,12 @@
 
 import Foundation
 import FirebaseAuth
-//Datasource se conecta con la SDK de firebase
-///Aqui va a estar la logica de la auth, luego se conecta con el repositorio, luego con el VM y dsp con la View.
+
 struct User {
     let email: String
 }
+
 final class AuthenticationFirebaseDatasource {
-    
     func getCurrentUser() -> User? {
         guard let email = Auth.auth().currentUser?.email else {
             return nil
@@ -21,35 +20,27 @@ final class AuthenticationFirebaseDatasource {
         return .init(email: email)
     }
     
-    func createNewUser(email: String, password: String, completionBlock: @escaping (Result<User, Error>) -> Void){
-        Auth.auth().createUser(withEmail: email, password: password) { AuthDataResult, error in
+    func performAuthAction(email: String, password: String, action: AuthenticationViewModel.AuthAction, completionBlock: @escaping (Result<User, Error>) -> Void) {
+        let authCompletion: (AuthDataResult?, Error?) -> Void = { AuthDataResult, error in
             if let error = error {
-                print("Error creating a new user \(error.localizedDescription)")
+                print("Error in auth action \(error.localizedDescription)")
                 completionBlock(.failure(error))
                 return
             }
             let email = AuthDataResult?.user.email ?? "No email"
-            print("New user created with info \(email)")
+            print("Auth action with \(email) successful")
             completionBlock(.success(.init(email: email)))
         }
-    }
-    
-    func login(email: String, password: String, completionBlock: @escaping (Result<User, Error>) -> Void){
-        Auth.auth().signIn(withEmail: email, password: password) { AuthDataResult, error in
-            if let error = error {
-                print("Error login \(error.localizedDescription)")
-                completionBlock(.failure(error))
-                return
-            }
-            let email = AuthDataResult?.user.email ?? "No email"
-            print("Login with \(email) succesfull ")
-            completionBlock(.success(.init(email: email)))
+        
+        switch action {
+        case .createNewUser:
+            Auth.auth().createUser(withEmail: email, password: password, completion: authCompletion)
+        case .login:
+            Auth.auth().signIn(withEmail: email, password: password, completion: authCompletion)
         }
     }
     
     func logout() throws {
         try Auth.auth().signOut()
-        
     }
-    
 }

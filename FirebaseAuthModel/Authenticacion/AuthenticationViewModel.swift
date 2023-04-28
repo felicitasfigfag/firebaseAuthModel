@@ -7,13 +7,13 @@
 
 import Foundation
 
-final class AuthenticationViewModel : ObservableObject {
+final class AuthenticationViewModel: ObservableObject {
     @Published var user: User?
     @Published var messageError: String?
     
     private let authenticationRepository: AuthenticationRepository
     
-    init(authenticationRepository: AuthenticationRepository = AuthenticationRepository() ) {
+    init(authenticationRepository: AuthenticationRepository = AuthenticationRepository()) {
         self.authenticationRepository = authenticationRepository
         getCurrentUser()
     }
@@ -22,39 +22,28 @@ final class AuthenticationViewModel : ObservableObject {
         self.user = authenticationRepository.getCurrentUser()
     }
     
-    func createNewUser(email: String, password: String) {
-        authenticationRepository.createNewUser(email: email, password: password)
-        { [ weak self ] result in
+    func performAuthAction(email: String, password: String, action: AuthAction) {
+        authenticationRepository.performAuthAction(email: email, password: password, action: action) { [weak self] result in
             switch result {
             case .success(let user):
                 self?.user = user
             case .failure(let error):
                 self?.messageError = error.localizedDescription
             }
-            
         }
     }
     
-    func login(email: String, password: String) {
-        authenticationRepository.login(email: email, password: password)
-        { [ weak self ] result in
-            switch result {
-            case .success(let user):
-                self?.user = user
-            case .failure(let error):
-                self?.messageError = error.localizedDescription
-            }
-            
-        }
-    }
-    
-    func logout(){
+    func logout() {
         do {
             try authenticationRepository.logout()
             self.user = nil
-        }
-        catch{
+        } catch {
             print("Error logout")
         }
+    }
+    
+    enum AuthAction {
+        case createNewUser
+        case login
     }
 }

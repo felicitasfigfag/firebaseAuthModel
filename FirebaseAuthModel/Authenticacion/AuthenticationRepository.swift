@@ -4,13 +4,12 @@
 //
 //  Created by Felicitas Figueroa Fagalde on 27/04/2023.
 //
-
 import Foundation
 
 final class AuthenticationRepository {
     private let authenticationFirebaseDatasource: AuthenticationFirebaseDatasource
     
-    init( authenticationFirebaseDatasource: AuthenticationFirebaseDatasource = AuthenticationFirebaseDatasource() ){
+    init(authenticationFirebaseDatasource: AuthenticationFirebaseDatasource = AuthenticationFirebaseDatasource()) {
         self.authenticationFirebaseDatasource = authenticationFirebaseDatasource
     }
     
@@ -18,11 +17,8 @@ final class AuthenticationRepository {
         authenticationFirebaseDatasource.getCurrentUser()
     }
     
-    func createNewUser(email: String, password: String, completionBlock: @escaping (Result<User, Error>) -> Void) {
-        authenticationFirebaseDatasource.createNewUser(email: email, password: password, completionBlock: completionBlock)
-    }
-    func login(email: String, password: String, completionBlock: @escaping (Result<User, Error>) -> Void) {
-        authenticationFirebaseDatasource.login(email: email, password: password, completionBlock: completionBlock)
+    func performAuthAction(email: String, password: String, action: AuthenticationViewModel.AuthAction, completionBlock: @escaping (Result<User, Error>) -> Void) {
+        authenticationFirebaseDatasource.performAuthAction(email: email, password: password, action: action, completionBlock: completionBlock)
     }
     
     func logout() throws {

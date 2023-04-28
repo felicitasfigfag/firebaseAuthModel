@@ -123,9 +123,8 @@ struct LoginEmailView: View {
     }
 
     func performLogin() {
-        // Replace with your own authentication logic
-        authenticationViewModel.login(email: email, password: password)
-    }
+           authenticationViewModel.performAuthAction(email: email, password: password, action: .login)
+       }
 
     func loginWithFacebook() {
         // Replace with your own Facebook login logic

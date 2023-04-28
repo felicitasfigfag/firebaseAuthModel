@@ -125,10 +125,9 @@ struct RegisterView: View {
     }
     
     func performRegistration() {
-        
-        print("Full Name: (fullName), Email: (email), Password: (password), Confirm Password: (confirmPassword)")
-        authenticationViewModel.createNewUser(email: email, password: password)
-    }
+           print("Full Name: \(username), Email: \(email), Password: \(password), Confirm Password: \(confirmPassword)")
+           authenticationViewModel.performAuthAction(email: email, password: password, action: .createNewUser)
+       }
     
     func registerWithFacebook() {
         // Replace with your own Facebook registration logic
