@@ -13,7 +13,7 @@ struct AuthenticationView: View {
     
     var body: some View {
         if !showRegisterView {
-            LoginView(authenticationViewModel: authenticationViewModel, showRegisterView: $showRegisterView)
+            LoginEmailView(authenticationViewModel: authenticationViewModel, showRegisterView: $showRegisterView)
         } else {
             RegisterView(authenticationViewModel: authenticationViewModel, showRegisterView: $showRegisterView)
         }

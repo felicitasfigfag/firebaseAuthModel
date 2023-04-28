@@ -8,7 +8,7 @@
 import SwiftUI
 import AuthenticationServices
 
-struct LoginView: View {
+struct LoginEmailView: View {
     
     @ObservedObject var authenticationViewModel: AuthenticationViewModel
     @State private var email: String = ""
@@ -109,8 +109,14 @@ struct LoginView: View {
                     .foregroundColor(Color.blue)
             }
             .padding(.top, 16)
-
-
+            
+            if let messageError = authenticationViewModel.messageError {
+                Text("Error \(messageError)")
+                    .foregroundColor(.red)
+                    .font(.body)
+                    .bold()
+                    .padding(.top, 20)
+            }
 
         }
         .padding(.top, 64)
@@ -118,7 +124,7 @@ struct LoginView: View {
 
     func performLogin() {
         // Replace with your own authentication logic
-        print("Email: \(email), Password: \(password)")
+        authenticationViewModel.login(email: email, password: password)
     }
 
     func loginWithFacebook() {
@@ -134,6 +140,6 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView(authenticationViewModel: AuthenticationViewModel(), showRegisterView: .constant(false))
+        LoginEmailView(authenticationViewModel: AuthenticationViewModel(), showRegisterView: .constant(false))
     }
 }

@@ -21,11 +21,6 @@ final class AuthenticationFirebaseDatasource {
         return .init(email: email)
     }
     
-    func logout() throws {
-        try Auth.auth().signOut()
-        
-    }
-    
     func createNewUser(email: String, password: String, completionBlock: @escaping (Result<User, Error>) -> Void){
         Auth.auth().createUser(withEmail: email, password: password) { AuthDataResult, error in
             if let error = error {
@@ -38,4 +33,23 @@ final class AuthenticationFirebaseDatasource {
             completionBlock(.success(.init(email: email)))
         }
     }
+    
+    func login(email: String, password: String, completionBlock: @escaping (Result<User, Error>) -> Void){
+        Auth.auth().signIn(withEmail: email, password: password) { AuthDataResult, error in
+            if let error = error {
+                print("Error login \(error.localizedDescription)")
+                completionBlock(.failure(error))
+                return
+            }
+            let email = AuthDataResult?.user.email ?? "No email"
+            print("Login with \(email) succesfull ")
+            completionBlock(.success(.init(email: email)))
+        }
+    }
+    
+    func logout() throws {
+        try Auth.auth().signOut()
+        
+    }
+    
 }
