@@ -128,6 +128,7 @@ struct LoginEmailView: View {
 
     func loginWithFacebook() {
         // Replace with your own Facebook login logic
+        authenticationViewModel.loginFacebook()
         print("Login with Facebook")
     }
 

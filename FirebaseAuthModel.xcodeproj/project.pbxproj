@@ -21,8 +21,8 @@
 		191A934929FB28D700189BB4 /* AuthenticationFirebaseDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191A934829FB28D700189BB4 /* AuthenticationFirebaseDatasource.swift */; };
 		191A934B29FB2B6300189BB4 /* AuthenticationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191A934A29FB2B6300189BB4 /* AuthenticationRepository.swift */; };
 		19BA27C629FB41CB0028E28E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BA27C529FB41CB0028E28E /* HomeView.swift */; };
-		19BA27E429FC771C0028E28E /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 19BA27E329FC771C0028E28E /* FacebookCore */; };
 		19BA27E629FC771C0028E28E /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 19BA27E529FC771C0028E28E /* FacebookLogin */; };
+		19BA27EB29FC7FBD0028E28E /* FacebookAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BA27EA29FC7FBD0028E28E /* FacebookAuthentication.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +38,9 @@
 		191A934829FB28D700189BB4 /* AuthenticationFirebaseDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationFirebaseDatasource.swift; sourceTree = "<group>"; };
 		191A934A29FB2B6300189BB4 /* AuthenticationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRepository.swift; sourceTree = "<group>"; };
 		19BA27C529FB41CB0028E28E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		19BA27E729FC796C0028E28E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		19BA27E829FC7C500028E28E /* FirebaseAuthModelRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FirebaseAuthModelRelease.entitlements; sourceTree = "<group>"; };
+		19BA27EA29FC7FBD0028E28E /* FacebookAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookAuthentication.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,7 +52,6 @@
 				191A933F29FAEBDB00189BB4 /* FirebaseAnalyticsSwift in Frameworks */,
 				191A934629FB281400189BB4 /* FirebaseAuth in Frameworks */,
 				191A933D29FAEBDB00189BB4 /* FirebaseAnalytics in Frameworks */,
-				19BA27E429FC771C0028E28E /* FacebookCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +78,8 @@
 		191A932A29FAE6F800189BB4 /* FirebaseAuthModel */ = {
 			isa = PBXGroup;
 			children = (
+				19BA27E829FC7C500028E28E /* FirebaseAuthModelRelease.entitlements */,
+				19BA27E729FC796C0028E28E /* Info.plist */,
 				191A934729FB285800189BB4 /* Authenticacion */,
 				191A932B29FAE6F800189BB4 /* FirebaseAuthModelApp.swift */,
 				191A933929FAEB6D00189BB4 /* GoogleService-Info.plist */,
@@ -103,6 +107,7 @@
 		191A934729FB285800189BB4 /* Authenticacion */ = {
 			isa = PBXGroup;
 			children = (
+				19BA27E929FC7FAA0028E28E /* FacebookAuth */,
 				19BA27C429FB41BE0028E28E /* Views */,
 				191A934829FB28D700189BB4 /* AuthenticationFirebaseDatasource.swift */,
 				191A934A29FB2B6300189BB4 /* AuthenticationRepository.swift */,
@@ -120,6 +125,14 @@
 				19BA27C529FB41CB0028E28E /* HomeView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		19BA27E929FC7FAA0028E28E /* FacebookAuth */ = {
+			isa = PBXGroup;
+			children = (
+				19BA27EA29FC7FBD0028E28E /* FacebookAuthentication.swift */,
+			);
+			path = FacebookAuth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,7 +155,6 @@
 				191A933C29FAEBDB00189BB4 /* FirebaseAnalytics */,
 				191A933E29FAEBDB00189BB4 /* FirebaseAnalyticsSwift */,
 				191A934529FB281400189BB4 /* FirebaseAuth */,
-				19BA27E329FC771C0028E28E /* FacebookCore */,
 				19BA27E529FC771C0028E28E /* FacebookLogin */,
 			);
 			productName = FirebaseAuthModel;
@@ -209,6 +221,7 @@
 				1909B8A929FB30200021C07C /* AuthenticationViewModel.swift in Sources */,
 				191A934329FB0F7800189BB4 /* RegisterView.swift in Sources */,
 				191A934B29FB2B6300189BB4 /* AuthenticationRepository.swift in Sources */,
+				19BA27EB29FC7FBD0028E28E /* FacebookAuthentication.swift in Sources */,
 				19BA27C629FB41CB0028E28E /* HomeView.swift in Sources */,
 				191A932E29FAE6F800189BB4 /* AuthenticationView.swift in Sources */,
 				191A932C29FAE6F800189BB4 /* FirebaseAuthModelApp.swift in Sources */,
@@ -343,6 +356,7 @@
 				DEVELOPMENT_TEAM = KD464PCRMP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FirebaseAuthModel/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -366,12 +380,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FirebaseAuthModel/FirebaseAuthModelRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FirebaseAuthModel/Preview Content\"";
 				DEVELOPMENT_TEAM = KD464PCRMP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FirebaseAuthModel/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -447,11 +463,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 191A933B29FAEBDB00189BB4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
-		};
-		19BA27E329FC771C0028E28E /* FacebookCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 19BA27E229FC771C0028E28E /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
-			productName = FacebookCore;
 		};
 		19BA27E529FC771C0028E28E /* FacebookLogin */ = {
 			isa = XCSwiftPackageProductDependency;
