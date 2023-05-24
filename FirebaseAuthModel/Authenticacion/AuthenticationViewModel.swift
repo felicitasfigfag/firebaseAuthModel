@@ -32,6 +32,7 @@ final class AuthenticationViewModel: ObservableObject {
             }
         }
     }
+    
     func loginFacebook(){
         authenticationRepository.loginFacebok() { [weak self] result in
             switch result {
